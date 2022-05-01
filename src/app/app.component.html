@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" 
+  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+  crossorigin="anonymous">
+ 
+</head>
+<body>
+  <aside>
+    <div class="title">
+      <h1>DASHBOARD</h1>
+      <div>
+          <img src="assets/image/Escott_logo.svg" alt="">
+      </div>
+    </div>
+
+  </aside>
+  
+  <main class="w-100">
+    <div class="container">
+      <div class="top-row" *ngFor="let machine of top_row">
+        <div class="machine washer"> 
+          <div class="bar">
+            <h5>{{machine.type}}</h5>
+            <div class="info">
+              <p  class="text">ID: {{machine.mid}}</p>
+              <p  class="text">Max Load: {{machine.max_usage}}</p>
+              
+              <!-- Current Usage -->
+              <div class="text" *ngIf="machine.isOn && machine.max_usage > machine.current_usage" >
+                Current Usage : {{machine.current_usage + 1}} 
+              </div>
+
+              <div class="text" *ngIf="(machine.isOn && machine.current_usage == machine.max_usage) || 
+              (!machine.isOn || (machine.current_usage > machine.max_usage))" >
+                Current Usage : {{machine.current_usage}} 
+              </div>
+           
+              <!-- // Countdown   -->
+              <div class="text" *ngIf="machine.isOn && machine.max_usage > machine.current_usage && 3 > machine.mid"> 
+                Countdown : <countdown #countdown [config]="{leftTime:10800}"></countdown>
+              </div>
+              <div class="text" *ngIf="machine.isOn && machine.max_usage > machine.current_usage && machine.mid == 3"> 
+                Countdown : <countdown #countdown [config]="{leftTime:3600}"></countdown>
+              </div>
+              <div class="text" *ngIf="!machine.isOn || (machine.max_usage == machine.current_usage)">
+                Countdown : <countdown></countdown>
+              </div>
+
+              
+              <br>
+
+              <!-- Status -->
+              
+              <button type="button" class="btn btn-danger
+                    text-light h5 " *ngIf="(machine.current_usage == machine.max_usage)" 
+                    style="height:45px">Out of Use
+              </button>
+ 
+              <button type="button" class="btn btn-danger
+                      text-light h5" *ngIf="machine.isOn && (machine.max_usage > machine.current_usage)"
+                      style="height:45px">Unavailble
+              </button>
+            
+              <button type="button" class="btn btn-success
+                      text-light h5" *ngIf = "!machine.isOn && (machine.max_usage > machine.current_usage)"
+                      style="height:45px">Available
+              </button>
+                  
+            </div> 
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="bot-row" *ngFor="let machine of bot_row">
+        <div class="machine washer">
+          <div class="bar">
+            <h5>{{machine.type}}</h5>
+            <div class="info">
+              <p>ID: {{machine.mid}}</p>
+              <p class="max_usage">Max Usage: {{machine.max_usage}}</p>
+              
+              <!-- Current Usage -->
+              <div class="current_usage" *ngIf="machine.isOn && machine.max_usage > machine.current_usage" >
+                Current Usage : {{machine.current_usage + 1}} 
+              </div>
+
+              <div class="current_usage" *ngIf="(machine.isOn && machine.current_usage == machine.max_usage) || 
+              (!machine.isOn || (machine.current_usage > machine.max_usage))" >
+                Current Usage : {{machine.current_usage}} 
+              </div>
+              
+
+              <!-- Countdown   -->
+              <div class="countdown" *ngIf="machine.isOn && machine.max_usage > machine.current_usage"> 
+                Countdown : <countdown #countdown [config]="{leftTime:3600}"></countdown>
+              </div>
+  
+              <div class="countdown" *ngIf="!machine.isOn || (machine.max_usage == machine.current_usage)">
+                Countdown : <countdown></countdown>
+              </div>
+
+              <!-- //Status   -->
+              <button type="button" class="btn btn-danger
+              text-light h5 " *ngIf="(machine.current_usage == machine.max_usage)" 
+              style="height:45px">Out of Use
+              </button>
+    
+              <button type="button" class="btn btn-danger
+                      text-light h5" *ngIf="machine.isOn && (machine.max_usage > machine.current_usage)"
+                      style="height:45px">Unavailble
+              </button>
+
+              <button type="button" class="btn btn-success
+                      text-light h5" *ngIf = "!machine.isOn && (machine.max_usage > machine.current_usage)"
+                      style="height:45px">Available
+              </button>   
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</main>
+
+
+</body>
+</html>

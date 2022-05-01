@@ -1,0 +1,61 @@
+{
+    "laundry" :  [
+        {
+            "_id": "624714e317d57449fc36fba0",
+            "type": "Big Washer",
+            "isOn": true,
+            "mid": 1,
+            "max_usage": 4,
+            "current_usage": 2
+        },
+        {
+            "_id": "6247177417d57449fc36fbaa",
+            "type": "Big Washer",
+            "isOn": false,
+            "mid": 2,
+            "current_usage": 4,
+            "max_usage": 4
+        },
+        {
+            "_id": "6247177417d57449fc36fbab",
+            "type": "Washer",
+            "isOn": true,
+            "mid": 3,
+            "current_usage": 4,
+            "max_usage": 4
+        },
+        {
+            "_id": "6247177417d57449fc36fbac",
+            "type": "Washer",
+            "isOn": false,
+            "mid": 4,
+            "max_usage": 4,
+            "current_usage": 1
+        },
+        {
+            "_id": "6247177417d57449fc36fbad",
+            "type": "Washer",
+            "isOn": false,
+            "mid": 5,
+            "current_usage": 1,
+            "max_usage": 4
+        },
+        {
+            "_id": "6247177417d57449fc36fbae",
+            "type": "Dryer",
+            "isOn": true,
+            "mid": 6,
+            "current_usage": 3,
+            "max_usage": 4
+        },
+        {
+            "_id": "6247177417d57449fc36fbaf",
+            "type": "Dryer",
+            "isOn": true,
+            "mid": 7,
+            "current_usage": 2,
+            "max_usage": 4
+        }
+    ]
+
+}
